@@ -146,7 +146,7 @@ void KNearestNeighbors(Vector<double> x,
 	// distances was originally passed to keep record of already
 	// calculated distances between i-vectors. But it ended up making
 	// things slower. 
-	int K = 100;
+	int K = 9;
 	if (K > Y.size()) {
 		K = Y.size();
 	}
