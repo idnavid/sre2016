@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
         KALDI_LOG << "minDCF is " << minDcf;
         
         std::cout.precision(4);
-        std::cout << (100.0 * eer);
+        std::cout << (100.0 * eer) << " , ";
         std::cout << (minDcf);
         
         return 0;
