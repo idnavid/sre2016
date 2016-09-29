@@ -3,7 +3,7 @@
 //  
 //
 //  Created by Navid Shokouhi on 9/28/16.
-//
+//  Slight modifications to Kaldi's compute-eer.
 //
 
 #include "base/kaldi-common.h"
