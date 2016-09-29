@@ -6,7 +6,7 @@ DIAR_DIR = /scratch2/nxs113020/CRSSdiar
 EXTRA_CXXFLAGS = -Wno-sign-compare -I${KALDI_DIR}/src
 include ${KALDI_DIR}/src/kaldi.mk
 
-BINFILES = ivector-clustering update-plda
+BINFILES = ivector-clustering update-plda compute-verification-errors
 
 OBJFILES = 
 

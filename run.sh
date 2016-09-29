@@ -17,9 +17,9 @@ log_end(){
 
 set -e # exit on error
 
-num_job=300
-num_job_ubm=400
-num_job_tv=24
+num_job=500
+num_job_ubm=500
+num_job_tv=40
 
 clear_all(){
     rm -rf exp mfcc data/*/split* data/*/feats.scp data/*/cmvn.scp data/*/vad.scp data/*vad score/*
@@ -27,26 +27,26 @@ clear_all(){
 #clear_all
 
 run_mfcc(){
-    mfccdir=/erasable/nxs113020/mfcc
-    for x in trn; do
+    mfccdir=/scratch/nxs113020/mfcc
+    for x in dev_JHU_subset; do
       steps/make_mfcc.sh --nj $num_job --cmd "$train_cmd" \
         data/$x exp/make_mfcc/$x $mfccdir
       steps/compute_cmvn_stats.sh data/$x exp/make_mfcc/$x $mfccdir 
       utils/fix_data_dir_sid.sh data/$x
       #sid/compute_vad_decision.sh --nj $num_job --cmd "$train_cmd" \
       #    data/$x exp/make_vad data/${x}_vad
-      #utils/fix_data_dir_sid.sh data/$x
+      utils/fix_data_dir_sid.sh data/$x
     done
 }
 #run_mfcc
 
 run_unsupervised_sad(){
     sad_tools="/scratch/nxs113020/speech_activity_detection/kaldi_setup/local/"
-    for x in tmp; do
+    for x in sre16_unlabeled_minor; do
        echo "$sad_tools/compute_vad_decision.sh $num_job \"$train_cmd\" data/$x"
     done
 }
-run_unsupervised_sad
+#run_unsupervised_sad
 
 ubmdim=2048
 ivdim=400
@@ -64,21 +64,21 @@ run_ubm(){
 run_tv_train(){
 
     sid/train_ivector_extractor.sh --nj $num_job_tv --cmd "$train_cmd" \
-        --ivector-dim $ivdim --num-iters 5 exp/full_ubm_${ubmdim}/final.ubm data/dev \
-        exp/extractor_${ubmdim} || exit 1;
+        --ivector-dim $ivdim --num-iters 5 exp/full_ubm_${ubmdim}_both_genders/final.ubm data/dev_JHU_subset \
+        exp/extractor_${ubmdim}_both_genders || exit 1;
 
 }
 #run_tv_train
 
 run_iv_extract(){
 
-   for x in dev trn tst; do
+   for x in sre08; do
        sid/extract_ivectors.sh --cmd "$train_cmd" --nj $num_job \
-           exp/extractor_${ubmdim} data/$x exp/${x}.iv || exit 1;
+           exp/extractor_${ubmdim}_both_genders data/$x exp/${x}.iv || exit 1;
    done
 
 }
-#run_iv_extract
+run_iv_extract
 
 trials=data/trial/AIDformat_SRE10_Male_trainIndex_testIndex_keys_core_cond5.lst.kaldi
 trials_key=data/trial/AIDformat_SRE10_Male_trainIndex_testIndex_keys_core_cond5.lst.kaldi.key 
