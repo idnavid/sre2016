@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
         
         std::cout.precision(4);
         std::cout << (100.0 * eer) << " , ";
-        std::cout << (minDcf);
+        std::cout << (minDcf) << std::endl;
         
         return 0;
     } catch(const std::exception &e) {
