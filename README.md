@@ -11,6 +11,7 @@ Please let me know if you have any comments, or corrections.
 ### Requirements:
 - [Kaldi](https://sourceforge.net/projects/kaldi/)
 - [GLPK](https://www.gnu.org/software/glpk/) (only required for i-vector clustering)
+
 If possible, please site: <br/>
 Zhang, C., Bahmaninezhad, F., Ranjan, S., Yu, C., Shokouhi, N., & Hansen, J. H. (2016). Utd-crss systems for 2016 nist speaker recognition evaluation. arXiv preprint arXiv:1610.07651.
 
