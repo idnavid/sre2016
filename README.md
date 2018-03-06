@@ -13,7 +13,7 @@ Please let me know if you have any comments, or corrections.
 - [GLPK](https://www.gnu.org/software/glpk/) (only required for i-vector clustering)
 
 ### Citations: <br/>
-##### Shokouhi, Navid, and John HL Hansen. "Probabilistic linear discriminant analysis for robust speaker identification in co-channel speech." Sixteenth Annual Conference of the International Speech Communication Association. 2015.
+##### Shokouhi, N., & Hansen, J. H. (2015). Probabilistic linear discriminant analysis for robust speaker identification in co-channel speech. In Sixteenth Annual Conference of the International Speech Communication Association.
 ##### Zhang, C., Bahmaninezhad, F., Ranjan, S., Yu, C., Shokouhi, N., & Hansen, J. H. (2016). UTD-CRSS systems for 2016 nist speaker recognition evaluation. arXiv preprint arXiv:1610.07651.
 
 
